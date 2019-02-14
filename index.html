@@ -7,20 +7,28 @@
     <title>2017 Eagles Quiz</title>
   </head>
   <body>
-    <header class="header">
+    <header>
       <h1>2017 Eagles Quiz</h1>
-      <img src="images/eagles-text.png">
+      <img src="images/eagles-text.png" alt="The Philadelpha Eagles logo, including team name">
     </header>
     <main>
-      <p class="instructions">Press start to test your knowledge!</p>
-      <form action="">
-        <button>Start</button>
-        <p>This is a question. Is the answer A, B, C, or D?</p>
-        <button>Option A</button>
-        <button>Option B</button>
-        <button>Option C</button>
-        <button>Option D</button>
-      </form>
+      <div class="start js-start">
+        <p class="instructions">Click on the Eagles logo to test your knowledge!</p>
+        <img src="images/eagles-logo.png" alt="The Philadelphia Eagles logo" width="400px">
+      </div>
+      <div class="quiz js-quiz hidden">
+        <form action="index.js" method="post">     
+          <p>This is a question. Is the answer A, B, C, or D?</p>
+          <button>Option A</button>
+          <button>Option B</button>
+          <button>Option C</button>
+          <button>Option D</button>
+        </form>
+      </div>
+      <div class="results js-results hidden">
+        <p class="js-question-number">You are on question n out of 10</p>
+        <p class="js-current-score">x correct, y incorrect</p>
+      </div>
     </main>
   </body>
 </html>
