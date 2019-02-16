@@ -34,9 +34,18 @@ function answerIncorrect() {
   // inform user of correct answer
 }
 
+function getNextAnswers() {
+  $(`.js-answer-0`).text(STORE[currentQuestion][answers[0]]);
+  $(`.js-answer-1`).text(STORE[currentQuestion][answers[1]]);
+  $(`.js-answer-2`).text(STORE[currentQuestion][answers[2]]);
+  $(`.js-answer-3`).text(STORE[currentQuestion][answers[3]]);
+  console.log('getNextAnswers ran');
+}
+
 function getNextQuestion() {
-  // traverse DOM to find question block
-  // show question block
+  $('.js-quiz').removeClass('hidden');
+  $('.js-question').text(STORE[currentQuestion].qtext);
+  // add function to add answer text to buttons
   console.log('getNextQuestion ran')
   // gets the next question, displays it
   // shows answers

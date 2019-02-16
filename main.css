@@ -10,6 +10,15 @@ body {
   margin-right: auto;
 }
 
+ul {
+  list-style-type: none;
+}
+
+.answer {
+  height: 40px;
+  width: 100px;
+}
+
 .start {
   max-width: 50%;
   margin-left: auto;
