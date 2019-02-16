@@ -1,15 +1,20 @@
 'use strict';
 
+function resetScore() {
+  score = 0;
+  currentQuestion = 0;
+  $('.js-results').removeClass('hidden');
+  $('.js-start').addClass('hidden');
+  console.log('showScore ran');
+}
+
 function startButtonClicked() {
-  let score = 0;
-  // let questionCurrent = 0;
-  $('.js-start').on('click', event =>{
+  $('.js-start-button').on('click', event =>{
     event.preventDefault();
     console.log('startButtonClicked ran')
+    resetScore();
     getNextQuestion();
   });
-  return score
-  // return score, so other functions can manipulate it
 }
 
 function questionAnswered() {
@@ -30,6 +35,8 @@ function answerIncorrect() {
 }
 
 function getNextQuestion() {
+  // traverse DOM to find question block
+  // show question block
   console.log('getNextQuestion ran')
   // gets the next question, displays it
   // shows answers
@@ -37,7 +44,12 @@ function getNextQuestion() {
 }
 
 function restartQuiz() {
-  // do I need a separate function for this? maybe reuse start function?
+  // reset the score
+  // go back to question 1
 }
 
-// add the jquery function call thing at the end of this
+function runQuizApp() {
+  startButtonClicked();
+}
+
+$(runQuizApp);

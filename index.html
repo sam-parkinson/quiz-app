@@ -15,16 +15,21 @@
       <form action="index.js" method="post">  
         <div class="start js-start">
           <p class="instructions">Click on the start button to test your knowledge!</p>
-          <button class="start js-start">Start!</button>
+          <button class="js-start-button">Start!</button>
         </div>
         <div class="quiz js-quiz hidden">
-            <p>This is a question. Is the answer A, B, C, or D?</p>
-            <button>Option A</button>
-            <button>Option B</button>
-            <button>Option C</button>
-            <button>Option D</button>
+            <p class="js-question"></p>
+            <button class="js-answer-1"></button>
+            <button class="js-answer-2"></button>
+            <button class="js-answer-3"></button>
+            <button class="js-answer-4"></button>
         </div>
       </form>
+      <div class="hidden">
+        <p>
+          
+        </p>
+      </div>
       <div class="results js-results hidden">
         <p class="js-question-number">You are on question n out of 10</p>
         <p class="js-current-score">x correct, y incorrect</p>
