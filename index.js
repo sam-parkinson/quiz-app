@@ -9,7 +9,7 @@ function resetScore() {
 }
 
 function startButtonClicked() {
-  $('.js-start-button').on('click', event =>{
+  $('.js-start-button').on('click', event => {
     event.preventDefault();
     console.log('startButtonClicked ran')
     resetScore();
@@ -18,8 +18,16 @@ function startButtonClicked() {
 }
 
 function questionAnswered() {
-  // check if the answer is correct or not
-  // bring up the next question
+  $('.answer').on('click', event => {
+    const ans1 = $(event.currentTarget).find('span').text();
+    const correct1 = STORE[currentQuestion].correctAnswer;
+    event.preventDefault();
+    if (ans1 === correct1) {
+      answerCorrect();
+    } else {
+      answerIncorrect();
+    }
+  });
 }
 
 function answerCorrect() {
@@ -27,29 +35,28 @@ function answerCorrect() {
   // display score
   // inform user that answer is correct
   // return score
+  console.log('correct answer!');
 }
 
 function answerIncorrect() {
   // inform user that answer is incorrect
   // inform user of correct answer
+  console.log('incorrect answer.');
 }
 
 function getNextAnswers() {
-  $(`.js-answer-0`).text(STORE[currentQuestion][answers[0]]);
-  $(`.js-answer-1`).text(STORE[currentQuestion][answers[1]]);
-  $(`.js-answer-2`).text(STORE[currentQuestion][answers[2]]);
-  $(`.js-answer-3`).text(STORE[currentQuestion][answers[3]]);
+  for (let i = 0; i < 4; i++){
+    $(`.js-answer-${i}`).text(STORE[currentQuestion].answers[i]);
+  }
+  questionAnswered();
   console.log('getNextAnswers ran');
 }
 
 function getNextQuestion() {
   $('.js-quiz').removeClass('hidden');
   $('.js-question').text(STORE[currentQuestion].qtext);
-  // add function to add answer text to buttons
-  console.log('getNextQuestion ran')
-  // gets the next question, displays it
-  // shows answers
-  // adds hidden classes indicating correctness and incorrectness
+  getNextAnswers();
+  console.log('getNextQuestion ran');
 }
 
 function restartQuiz() {
