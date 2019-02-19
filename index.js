@@ -16,31 +16,25 @@ function startButtonClicked() {
 }
 
 function questionAnswered() {
-  // this function is currently running currentQuestion number of times
-  // figure out why, stop it
   $('.answer').on('click', event => {
     const ans1 = $(event.currentTarget).find('span').text();
     const correct1 = STORE[currentQuestion].correctAnswer;
     event.preventDefault();
     if (ans1 === correct1) {
       answerCorrect();
-      console.log('answer correct ran');
     } else {
       answerIncorrect();
     }
-    console.log('questionAnswered ran');
   });
 }
 
 function answerCorrect() {
   score++;
-  console.log(score);
   $('.js-correct').text(score);
   $('.js-quiz').addClass('hidden');
   $('.js-result').removeClass('hidden');
   $('.js-result-correct').removeClass('hidden');
   $('.js-result-incorrect').addClass('hidden');
-
 }
 
 function answerIncorrect() {
@@ -56,7 +50,10 @@ function nextButtonClicked() {
   $('.next').on('click', event => {
     event.preventDefault();
     currentQuestion++;
-    // ('.js-question-number span').text(currentQuestion + 1);
+    // if / else statement goes here
+    // if currentQuestion = 10, next button becomes restart button
+    // else below happens
+    $('.js-question-number span').text(currentQuestion + 1);
     getNextQuestion();
     $('.js-result').addClass('hidden');
   });
@@ -66,15 +63,12 @@ function getNextAnswers() {
   for (let i = 0; i < 4; i++){
     $(`.js-answer-${i}`).text(STORE[currentQuestion].answers[i]);
   }
-  questionAnswered();
-  // questionAnswered should only run once
 }
 
 function getNextQuestion() {
   $('.js-quiz').removeClass('hidden');
   $('.js-question').text(STORE[currentQuestion].qtext);
   getNextAnswers();
-  console.log('getNextQuestion ran');
 }
 
 function restartQuiz() {
@@ -85,6 +79,7 @@ function restartQuiz() {
 function runQuizApp() {
   startButtonClicked();
   nextButtonClicked();
+  questionAnswered();
 }
 
 $(runQuizApp);
