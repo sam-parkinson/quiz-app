@@ -20,27 +20,36 @@
         <div class="quiz js-quiz hidden">
           <p class="js-question"></p>
           <button class="answer">
-            <span class="js-answer-0">Filler</span>
+            <span class="js-answer-0"></span>
           </button>
           <button class="answer">
-            <span class="js-answer-1">Filler</span>
+            <span class="js-answer-1"></span>
           </button>
           <button class="answer">
-            <span class="js-answer-2">Filler</span>
+            <span class="js-answer-2"></span>
           </button>
           <button class="answer">
-            <span class="js-answer-3">Filler</span>
+            <span class="js-answer-3"></span>
           </button>
         </div>
+        <div class="js-result hidden">
+            <p>
+              Your answer is <span class="js-result-correct hidden">correct!</span>
+              <span class="js-result-incorrect hidden">incorrect. The correct answer was 
+                <span></span>
+              </span>
+            </p>
+            <button class="next">Next</button>
+          </div>
       </form>
-      <div class="hidden">
-        <p>
-          
+      <div class="score js-score hidden">
+        <p class="js-question-number">You are on question 
+          <span>1</span> out of 10
         </p>
-      </div>
-      <div class="results js-results hidden">
-        <p class="js-question-number">You are on question <span>1</span> out of 10</p>
-        <p class="js-current-score"><span>0</span> correct, <span>0</span> incorrect</p>
+        <p class="js-current-score">
+          <span class="js-correct">0</span> correct, 
+          <span class="js-incorrect">0</span> incorrect
+        </p>
       </div>
     </main>
     <script src="https://code.jquery.com/jquery-3.3.1.js"

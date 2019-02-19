@@ -3,45 +3,63 @@
 function resetScore() {
   score = 0;
   currentQuestion = 0;
-  $('.js-results').removeClass('hidden');
+  $('.js-score').removeClass('hidden');
   $('.js-start').addClass('hidden');
-  console.log('showScore ran');
 }
 
 function startButtonClicked() {
   $('.js-start-button').on('click', event => {
     event.preventDefault();
-    console.log('startButtonClicked ran')
     resetScore();
     getNextQuestion();
   });
 }
 
 function questionAnswered() {
+  // this function is currently running currentQuestion number of times
+  // figure out why, stop it
   $('.answer').on('click', event => {
     const ans1 = $(event.currentTarget).find('span').text();
     const correct1 = STORE[currentQuestion].correctAnswer;
     event.preventDefault();
     if (ans1 === correct1) {
       answerCorrect();
+      console.log('answer correct ran');
     } else {
       answerIncorrect();
     }
+    console.log('questionAnswered ran');
   });
 }
 
 function answerCorrect() {
-  // increment score
-  // display score
-  // inform user that answer is correct
-  // return score
-  console.log('correct answer!');
+  score++;
+  console.log(score);
+  $('.js-correct').text(score);
+  $('.js-quiz').addClass('hidden');
+  $('.js-result').removeClass('hidden');
+  $('.js-result-correct').removeClass('hidden');
+  $('.js-result-incorrect').addClass('hidden');
+
 }
 
 function answerIncorrect() {
-  // inform user that answer is incorrect
-  // inform user of correct answer
-  console.log('incorrect answer.');
+  $('.js-incorrect').text((currentQuestion + 1) - score);
+  $('.js-quiz').addClass('hidden');
+  $('.js-result').removeClass('hidden');
+  $('.js-result-correct').addClass('hidden');
+  $('.js-result-incorrect').removeClass('hidden');
+  $('.js-result-incorrect span').text(STORE[currentQuestion].correctAnswer)
+}
+
+function nextButtonClicked() {
+  $('.next').on('click', event => {
+    event.preventDefault();
+    currentQuestion++;
+    // ('.js-question-number span').text(currentQuestion + 1);
+    getNextQuestion();
+    $('.js-result').addClass('hidden');
+  });
 }
 
 function getNextAnswers() {
@@ -49,7 +67,7 @@ function getNextAnswers() {
     $(`.js-answer-${i}`).text(STORE[currentQuestion].answers[i]);
   }
   questionAnswered();
-  console.log('getNextAnswers ran');
+  // questionAnswered should only run once
 }
 
 function getNextQuestion() {
@@ -66,6 +84,7 @@ function restartQuiz() {
 
 function runQuizApp() {
   startButtonClicked();
+  nextButtonClicked();
 }
 
 $(runQuizApp);

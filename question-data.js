@@ -70,4 +70,4 @@ const STORE = [
 
 let score = 0;
 
-let currentQuestion = 0;
+let currentQuestion;
