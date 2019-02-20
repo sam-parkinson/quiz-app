@@ -49,15 +49,30 @@ function answerIncorrect() {
   $('.js-result-incorrect span').text(STORE[currentQuestion].correctAnswer);
 }
 
+function endQuiz() {
+  $('.js-final span').text(score);
+  if (score === 10) {
+    $('.js-final span').append('. Congratulations!')
+  } else if (score > 6) {
+    $('.js-final span').append('. Good job!')
+  } else {
+    $('.js-final span').append('. Want to try again?')
+  }
+  $('.js-final').removeClass('hidden');
+  $('.js-score').addClass('hidden');
+  $('.js-incorrect, .js-correct').text('');
+}
+
 function nextButtonClicked() {
   $('.next').on('click', event => {
     event.preventDefault();
     currentQuestion++;
-    // if / else statement goes here
-    // if currentQuestion = 10, next button becomes restart button
-    // else below happens
-    $('.js-question-number span').text(currentQuestion + 1);
-    getNextQuestion();
+    if (currentQuestion === 10) {
+      endQuiz();
+    } else {
+      $('.js-question-number span').text(currentQuestion + 1);
+      getNextQuestion();
+    }
     $('.js-result').addClass('hidden');
   });
 }
@@ -74,15 +89,22 @@ function getNextQuestion() {
   getNextAnswers();
 }
 
-function restartQuiz() {
-  // reset the score
-  // go back to question 1
+function restartButtonClicked() {
+  $('.js-restart-button').on('click', event => {
+    event.preventDefault();
+    $('.js-final span').empty();
+    $('.js-final').addClass('hidden');
+  })
+
 }
 
 function runQuizApp() {
   startButtonClicked();
   nextButtonClicked();
   questionAnswered();
+  restartButtonClicked();
 }
 
 $(runQuizApp);
+
+// todo: polish up quiz endings, make it impossible to restart with keyboard and hidden div
