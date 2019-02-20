@@ -12,51 +12,53 @@
       <img src="images/eagles-text.png" alt="The Philadelpha Eagles logo, including team name">
     </header>
     <main>
-      <form action="index.js" method="post">  
-        <div class="start js-start">
-          <p class="instructions">Click on the start button to test your knowledge!</p>
-          <button class="js-start-button">Start!</button>
-        </div>
-        <div class="quiz js-quiz hidden">
-          <p class="js-question"></p>
-          <button class="answer">
-            <span class="js-answer-0"></span>
-          </button>
-          <button class="answer">
-            <span class="js-answer-1"></span>
-          </button>
-          <button class="answer">
-            <span class="js-answer-2"></span>
-          </button>
-          <button class="answer">
-            <span class="js-answer-3"></span>
-          </button>
-        </div>
-        <div class="js-result hidden">
-            <p>
-              Your answer is <span class="js-result-correct hidden">correct!</span>
-              <span class="js-result-incorrect hidden">incorrect. The correct answer was 
+      <div class="container">
+        <form action="index.js" method="post">  
+          <div class="start js-start">
+            <p class="instructions">Click on the start button to test your knowledge!</p>
+            <button class="js-start-button">Start!</button>
+          </div>
+          <div class="quiz js-quiz hidden">
+            <p class="js-question"></p>
+            <button class="answer">
+              <span class="js-answer-0"></span>
+            </button>
+            <button class="answer">
+              <span class="js-answer-1"></span>
+            </button>
+            <button class="answer">
+              <span class="js-answer-2"></span>
+            </button>
+            <button class="answer">
+              <span class="js-answer-3"></span>
+            </button>
+          </div>
+          <div class="js-result hidden">
+              <p>
+                Your answer is <span class="js-result-correct hidden">correct!</span>
+                <span class="js-result-incorrect hidden">incorrect. The correct answer was 
+                  <span></span>
+                </span>
+              </p>
+              <button class="next">Next</button>
+            </div>
+            <div class="score js-score hidden">
+              <p class="js-question-number">You are on question 
+                <span>1</span> out of 10
+              </p>
+              <p class="js-current-score">
+                <span class="js-correct">0</span> correct, 
+                <span class="js-incorrect">0</span> incorrect
+              </p>
+            </div>
+            <div class="final js-final hidden">
+              <p>Your final score is 
                 <span></span>
-              </span>
-            </p>
-            <button class="next">Next</button>
-          </div>
-          <div class="score js-score hidden">
-            <p class="js-question-number">You are on question 
-              <span>1</span> out of 10
-            </p>
-            <p class="js-current-score">
-              <span class="js-correct">0</span> correct, 
-              <span class="js-incorrect">0</span> incorrect
-            </p>
-          </div>
-          <div class="final js-final hidden">
-            <p>Your final score is 
-              <span></span>
-            </p>
-            <button class="js-start-button js-restart-button">Restart</button>
-          </div>
-      </form>
+              </p>
+              <button class="js-start-button js-restart-button">Restart</button>
+            </div>
+        </form>
+      </div>
     </main>
     <script src="https://code.jquery.com/jquery-3.3.1.js"
   integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="

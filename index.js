@@ -60,7 +60,7 @@ function endQuiz() {
   }
   $('.js-final').removeClass('hidden');
   $('.js-score').addClass('hidden');
-  $('.js-incorrect, .js-correct').text('');
+  $('.js-incorrect, .js-correct').text('0');
 }
 
 function nextButtonClicked() {
@@ -94,6 +94,7 @@ function restartButtonClicked() {
     event.preventDefault();
     $('.js-final span').empty();
     $('.js-final').addClass('hidden');
+    $('.js-question-number span').text('1');
   })
 
 }
@@ -107,4 +108,4 @@ function runQuizApp() {
 
 $(runQuizApp);
 
-// todo: polish up quiz endings, make it impossible to restart with keyboard and hidden div
+// todo: make it impossible to restart with keyboard and hidden div
