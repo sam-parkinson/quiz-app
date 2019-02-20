@@ -28,22 +28,25 @@ function questionAnswered() {
   });
 }
 
+function showResult() {
+  $('.js-quiz').addClass('hidden');
+  $('.js-result').removeClass('hidden');
+}
+
 function answerCorrect() {
   score++;
   $('.js-correct').text(score);
-  $('.js-quiz').addClass('hidden');
-  $('.js-result').removeClass('hidden');
+  showResult();
   $('.js-result-correct').removeClass('hidden');
   $('.js-result-incorrect').addClass('hidden');
 }
 
 function answerIncorrect() {
   $('.js-incorrect').text((currentQuestion + 1) - score);
-  $('.js-quiz').addClass('hidden');
-  $('.js-result').removeClass('hidden');
+  showResult();
   $('.js-result-correct').addClass('hidden');
   $('.js-result-incorrect').removeClass('hidden');
-  $('.js-result-incorrect span').text(STORE[currentQuestion].correctAnswer)
+  $('.js-result-incorrect span').text(STORE[currentQuestion].correctAnswer);
 }
 
 function nextButtonClicked() {
@@ -60,7 +63,7 @@ function nextButtonClicked() {
 }
 
 function getNextAnswers() {
-  for (let i = 0; i < 4; i++){
+  for (let i = 0; i < 4; i++) {
     $(`.js-answer-${i}`).text(STORE[currentQuestion].answers[i]);
   }
 }
