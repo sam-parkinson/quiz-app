@@ -11,14 +11,15 @@ body {
 }
 
 header img {
-  max-width: 100%;
+  max-width: 90%;
   padding-left: 5%;
   padding-right: 5%;
-  max-height: 350px;
+  max-height: 250px;
 }
 
 .container {
-  max-width: 80%;
+  width: 80%;
+  max-width: 600px;
   padding: 10px;
   margin-left: auto;
   margin-right: auto;
@@ -67,6 +68,13 @@ h1 {
   display: none;
 }
 
-/* todo:
-  implement media queries / flexbox
-*/
+@media screen and (min-width: 580px) {
+  .answer-stack {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .answer-stack button {
+    width: 50%;
+  }
+}
